@@ -1,4 +1,4 @@
-from .parsers import parse_pdf, parse_doc, parse_image
+from .parsers import parse_pdf, parse_doc, parse_image, parse_csv
 from pathlib import Path
 
 FILE_TYPES = {
@@ -15,7 +15,7 @@ PARSERS = {
     "pdf": parse_pdf,
     "docx": parse_doc,
     # "text": parse_text,
-    # "csv": parse_csv,
+    "csv": parse_csv,
     # "json": parse_json,
     "image": parse_image,
 }
@@ -28,6 +28,7 @@ def parse_file(file):
     ext = detect_file_type(Path(file.name).suffix.lower().lstrip("."))
 
     parser = PARSERS.get(ext)
+    print("here", ext, parser)
     if parser:
         return parser(file)
     else:
