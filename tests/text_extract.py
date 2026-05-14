@@ -11,7 +11,7 @@ class MockFile:
             return f.read()
 
 
-file = MockFile("data\\rbidsim.png")
+file = MockFile("data\\samplecsv.csv")
 
 documents = parse_file(file)
 
